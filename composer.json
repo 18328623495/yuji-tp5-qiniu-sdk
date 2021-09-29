@@ -1,0 +1,21 @@
+{
+    "name": "xuxianqiong/tp5-qiniu-sdk",
+    "description": "tp5七牛云文件上传",
+    "require": {
+        "qiniu/php-sdk": "^7.4"
+    },
+    "require-dev": {
+        "qiniu/php-sdk": "^7.4"
+    },
+    "authors": [
+        {
+            "name": "许显琼",
+            "email": "604356827@qq.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "pf\\arr\\": "src/"
+        }
+    }
+}
