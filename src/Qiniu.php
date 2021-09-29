@@ -1,4 +1,6 @@
 <?php
+namespace TpQiniu;
+
 use think\Cache;
 use think\Config;
 use think\Exception;
