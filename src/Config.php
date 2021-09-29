@@ -17,4 +17,13 @@ class Config
      */
     const QINIU_BUCKET='byxbb';
 
+    /**
+     * 下载凭证过期时间
+     */
+    const DOWNLOAD_FILE_EXPIRES=3600;
+    /**
+     * 私有空间外链域名
+     */
+    const DOMAIN='r06a11um2.hn-bkt.clouddn.com';
+
 }
