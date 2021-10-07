@@ -12,11 +12,20 @@ class Qiniu
     private $_accessKey;
     private $_secretKey;
     private $_bucket;
+    //空间外链域名
+    private $_domain;
+    //私有文件下载过期时间
+    private $_download_file_expires;
 
-    public function __construct($accessKey = "", $secretKey = "", $bucketName = ""){
-        $this->_accessKey=!empty($accessKey)?$accessKey:\TpQiniu\Config::QINIU_ACCESS_KEY;
-        $this->_secretKey=!empty($_secretKey)?$secretKey:\TpQiniu\Config::QINIU_SECRET_KEY;
-        $this->_bucket=!empty($bucketName)?$bucketName:\TpQiniu\Config::QINIU_BUCKET;
+    public function __construct($accessKey = "", $secretKey = "", $bucketName = "",$domain="",$download_file_expires=60){
+        $this->_accessKey=!empty($accessKey)?$accessKey:Env::get('QINIU_ACCESS_KEY','');
+        $this->_secretKey=!empty($_secretKey)?$secretKey:Env::get('QINIU_SECRET_KEY','');
+        $this->_bucket=!empty($bucketName)?$bucketName:Env::get('QINIU_BUCKET','');
+        $this->_domain=!empty($domain)?$domain:Env::get('QINBIU_DOMAIN','');
+        $this->_download_file_expires=!empty($download_file_expires)?$download_file_expires:Env::get('DOWNLOAD_FILE_EXPIRES','');
+        if(empty($this->_accessKey)|| empty($this->_secretKey)||empty($this->_bucket)){
+            throw new Exception('七牛云参数配置不能为空！');
+        }
     }
 
     /**
@@ -73,11 +82,14 @@ class Qiniu
      * @return string
      */
     public function getDownloadToken($path){
+        if(empty($this->_domain)|| empty($this->_download_file_expires)){
+            throw new Exception('七牛云参数配置不能为空！');
+        }
         $auth =$this->getAuth();
         //过期时间
-        $expires=\TpQiniu\Config::DOWNLOAD_FILE_EXPIRES;
+        $expires=$this->_download_file_expires;
         // 私有空间中的外链 http://<domain>/<file_key>
-        $baseUrl = 'http://'.\TpQiniu\Config::DOMAIN.'/'.$path;
+        $baseUrl = 'http://'.$this->_domain.'/'.$path;
         // 对链接进行签名
         $signedUrl = $auth->privateDownloadUrl($path,$expires);
         return $signedUrl;

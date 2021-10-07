@@ -4,20 +4,17 @@
 
 1.1配置：
 
-在配置文件src/Config.php中配置七牛云的配置参数
+在.env文件中，配置七牛云的配置参数
 
-    /**
-    * 七牛云 AccessKey
-    */
-    const QINIU_ACCESS_KEY='xxx';
-    /**
-    * 七牛云 SecretKey
-    */
-    const QINIU_SECRET_KEY='xxxx';
-    /**
-    * 七牛云 空间名称
-    */
-    const QINIU_BUCKET='xxxx';
+    #七牛云参数配置
+    QINIU_ACCESS_KEY=xxx
+    QINIU_SECRET_KEY=xxxx
+    #空间名称
+    QINIU_BUCKET=xxx
+    #空间外链域名 
+    QINBIU_DOMAIN=xxxxx
+    #私有空间文件下载过期时间
+    DOWNLOAD_FILE_EXPIRES=60
 
 1.2使用：
 
