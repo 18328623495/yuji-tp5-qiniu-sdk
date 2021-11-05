@@ -6,6 +6,6 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'pf\\arr\\' => array($baseDir . '/src'),
+    'TpQiniu\\' => array($baseDir . '/src'),
     'Qiniu\\' => array($vendorDir . '/qiniu/php-sdk/src/Qiniu'),
 );

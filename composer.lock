@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "72188682281c59fbfa02d3c1568f6855",
+    "content-hash": "512d33af06b4bba6b6cece79cc4fda59",
     "packages": [
         {
             "name": "qiniu/php-sdk",
