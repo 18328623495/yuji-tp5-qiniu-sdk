@@ -18,5 +18,8 @@
 
 1.2使用：
 
+    更新依赖：composer update
+
+    远程图片上传：
     $qiniu=new Qiniu();
     return  $qiniu->fetch('http://xx.xx.xx');

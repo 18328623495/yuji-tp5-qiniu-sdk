@@ -69,7 +69,7 @@ class Qiniu
         $auth=new \Qiniu\Auth($this->_accessKey,$this->_secretKey);
         $BucketManager=new \Qiniu\Storage\BucketManager($auth);
         $bucket=!empty($bucket)?$bucket:$this->_bucket;
-        return $BucketManager->fetch($url,$bucket,'');
+        return $BucketManager->fetch($url,$bucket,$key);
     }
 
     private function getAuth(){
